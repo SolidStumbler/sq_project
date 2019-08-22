@@ -6,6 +6,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+/**
+ * Code to read CSV-Data taken in large parts from https://www.mkyong.com/java/how-to-read-and-parse-csv-file-in-java/
+ */
 public class CSVUtils {
 
     private static final char DEFAULT_SEPARATOR = ';';
@@ -37,20 +40,20 @@ public class CSVUtils {
         return retVal;
     }
 
-    public static List<String> parseLine(String cvsLine) {
-        return parseLine(cvsLine, DEFAULT_SEPARATOR, DEFAULT_QUOTE);
+    public static List<String> parseLine(String csvLine) {
+        return parseLine(csvLine, DEFAULT_SEPARATOR, DEFAULT_QUOTE);
     }
 
-    public static List<String> parseLine(String cvsLine, char separators) {
-        return parseLine(cvsLine, separators, DEFAULT_QUOTE);
+    public static List<String> parseLine(String csvLine, char separators) {
+        return parseLine(csvLine, separators, DEFAULT_QUOTE);
     }
 
-    public static List<String> parseLine(String cvsLine, char separators, char customQuote) {
+    public static List<String> parseLine(String csvLine, char separators, char customQuote) {
 
         List<String> result = new ArrayList<>();
 
         //if empty, return!
-        if (cvsLine == null && cvsLine.isEmpty()) {
+        if (csvLine == null && csvLine.isEmpty()) {
             return result;
         }
 
@@ -67,7 +70,7 @@ public class CSVUtils {
         boolean startCollectChar = false;
         boolean doubleQuotesInColumn = false;
 
-        char[] chars = cvsLine.toCharArray();
+        char[] chars = csvLine.toCharArray();
 
         for (char ch : chars) {
 

@@ -19,7 +19,7 @@ public class CSVPackage extends ArrayList<List<String>> {
      * @param hasHeader Does the csv have an extra line for headers? if not, DEFAULT_HEADERS will be used
      */
     public CSVPackage(boolean hasHeader) {
-        this.hasHeader = false;
+        this.hasHeader = hasHeader;
     }
 
     /**
