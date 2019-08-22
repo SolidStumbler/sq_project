@@ -25,7 +25,7 @@ public class CSVUtils {
     }
 
     public static CSVPackage parseFile(String path) throws FileNotFoundException {
-        parseFile(path, DEFAULT_SEPARATOR, DEFAULT_QUOTE, true);
+        return parseFile(path, DEFAULT_SEPARATOR, DEFAULT_QUOTE, true);
     }
 
     public static List<String> getLines(String path) throws FileNotFoundException{
