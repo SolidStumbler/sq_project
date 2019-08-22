@@ -36,20 +36,28 @@ public class CSVPackage extends ArrayList<List<String>> {
 
     /**
      * Returns the values at a certain index. Ignores the headerline if present.
-     * @param index Index of the values to get
+     * @param i Index of the values to get
      * @return a List of Strings containing the values at the given index
      * @throws IndexOutOfBoundsException if the index is out of bounds
      */
-    public List<String> getValues(int index) throws IndexOutOfBoundsException {
+    @Override
+    public List<String> get(int i){
         if(this.isEmpty()) return null;
 
         // if a header line exists, index is actually index+1 (concerning the wrapped values)
         if(hasHeader){
-            index++;
+            i++;
         }
-        if(this.size() < index) {
+        if(this.size() < i) {
             throw new IndexOutOfBoundsException();
         }
-        return this.get(index);
+        return this.get(i);
+    }
+    @Override
+    public int size(){
+        if(hasHeader) {
+            return super.size() - 1;
+        }
+        return super.size();
     }
 }
