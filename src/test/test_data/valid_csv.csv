@@ -1,0 +1,63 @@
+Datum der Sprechstunde;Medikamentname;Anzahl der Verschreibungen;Kosten pro Verschreibung
+01.11.2018;Paracetamol;5;1,49
+01.11.2018;Ibuprofen;8;1,99
+01.11.2018;Grippostad C;1;6,28
+01.11.2018;Dolormin;9;12,95
+02.11.2018;Grippostad C;4;6,28
+02.11.2018;ACC Akut;15;9,28
+02.11.2018;Paracetamol;8;1,49
+02.11.2018;Penicillin V AL;25;5
+02.11.2018;Dolormin;7;12,95
+02.11.2018;Ibuprofen;6;1,99
+05.11.2018;Dolormin;5;12,95
+05.11.2018;ACC Akut;7;9,28
+05.11.2018;Grippostad C;3;6,28
+06.11.2018;ACC Akut;7;9,28
+06.11.2018;Dolormin;20;12,95
+06.11.2018;Paracetamol;32;1,49
+07.11.2018;Dolormin;9;12,95
+07.11.2018;Grippostad C;11;6,28
+07.11.2018;Penicillin V AL;3;5
+07.11.2018;Ibuprofen;15;1,99
+07.11.2018;ACC Akut;9;9,28
+08.11.2018;ACC Akut;4;9,28
+08.11.2018;Paracetamol;7;1,49
+08.11.2018;Grippostad C;12;6,28
+08.11.2018;Penicillin V AL;9;5
+08.11.2018;Dolormin;11;12,95
+08.11.2018;Ibuprofen;9;1,99
+09.11.2018;Grippostad C;13;6,28
+09.11.2018;Penicillin V AL;3;5
+09.11.2018;Ibuprofen;8;1,99
+09.11.2018;ACC Akut;5;9,28
+12.11.2018;Dolormin;9;12,95
+12.11.2018;Paracetamol;20;1,49
+12.11.2018;Ibuprofen;6;1,99
+13.11.2018;Grippostad C;12;6,28
+13.11.2018;Penicillin V AL;6;5
+13.11.2018;ACC Akut;4;9,28
+13.11.2018;Ibuprofen;9;1,99
+14.11.2018;Paracetamol;21;1,49
+15.11.2018;ACC Akut;13;1,49
+15.11.2018;Grippostad C;6;6,28
+16.11.2018;Ibuprofen;9;1,99
+19.11.2018;ACC Akut;20;9,28
+20.11.2018;Grippostad C;4;6,28
+20.11.2018;Penicillin V AL;7;5
+20.11.2018;Ibuprofen;1;1,99
+20.11.2018;ACC Akut;9;9,28
+21.11.2018;Dolormin;18;12,95
+22.11.2018;Ibuprofen;4;1,99
+22.11.2018;Dolormin;7;12,95
+23.11.2018;ACC Akut;4;9,28
+26.11.2018;Grippostad C;5;6,28
+26.11.2018;Ibuprofen;7;1,99
+26.11.2018;Paracetamol;1;1,49
+27.11.2018;Penicillin V AL;6;5
+27.11.2018;Ibuprofen;4;1,99
+28.11.2018;ACC Akut;6;1,49
+28.11.2018;Grippostad C;4;6,28
+28.11.2018;Paracetamol;9;1,49
+29.11.2018;Ibuprofen;6;1,99
+30.11.2018;Paracetamol;21;1,49
+30.11.2018;Penicillin V AL;4;5
