@@ -59,5 +59,21 @@ public class MedicalData {
             throw new InvalidLineException(csvLine, e);
         }
     }
+
+    public int getNumber() {
+        return number;
+    }
+
+    public void setNumber(int number) {
+        this.number = number;
+    }
+
+    public double getCost() {
+        return cost;
+    }
+
+    public void setCost(double cost) {
+        this.cost = cost;
+    }
 }
 
