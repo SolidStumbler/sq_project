@@ -14,8 +14,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="745.0" prefWidth="842.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUIController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="749.0" prefWidth="653.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUIController">
    <children>
       <VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -34,13 +33,13 @@
                 </Menu>
               </menus>
             </MenuBar>
-            <TableView fx:id="tableView" prefHeight="448.0" prefWidth="810.0" VBox.vgrow="ALWAYS">
+            <TableView fx:id="tableView" prefHeight="356.0" prefWidth="613.0" VBox.vgrow="ALWAYS">
               <columns>
-                <TableColumn fx:id="col_datum" prefWidth="176.0" text="Datum der Sprechstunde" />
-                <TableColumn fx:id="col_mediName" minWidth="0.0" prefWidth="137.0" text="Medikamentname" />
-                  <TableColumn fx:id="col_anzahlVerschreibung" prefWidth="164.0" text="Anzahl Verschreibungen" />
-                  <TableColumn fx:id="col_kostenProVerschreibung" prefWidth="179.0" text="Kosten pro Verschreibung" />
-                  <TableColumn fx:id="col_prozentualerAnteil" prefWidth="75.0" text="Prozent" />
+                <TableColumn fx:id="col_datum" prefWidth="176.0" text="Datum" />
+                <TableColumn fx:id="col_mediName" minWidth="0.0" prefWidth="137.0" text="Name" />
+                  <TableColumn fx:id="col_anzahlVerschreibung" prefWidth="164.0" text="Anzahl" />
+                  <TableColumn fx:id="col_kostenProVerschreibung" prefWidth="179.0" text="Kosten" />
+                  <TableColumn fx:id="col_prozentualerAnteil" prefWidth="75.0" text="Anteil" />
               </columns>
                <VBox.margin>
                   <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
