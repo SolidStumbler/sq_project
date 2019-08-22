@@ -12,12 +12,23 @@ public class MainApp extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("GUI.fxml"));
+        /*Parent root = FXMLLoader.load(getClass().getResource("GUI.fxml"));
 
         Scene scene = new Scene(root);
 
         stage.setTitle("Verwaltungsbericht PMS");
         stage.setScene(scene);
+        stage.show();*/
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("GUI.fxml"));
+        Parent root = (Parent)loader.load();
+        GUIController controller = (GUIController)loader.getController();
+        controller.setStage(stage);
+
+        Scene scene = new Scene(root);
+        stage.setTitle("Verwaltungsbericht PMS");
+        stage.setScene(scene);
         stage.show();
+
     }
 }
