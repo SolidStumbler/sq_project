@@ -1,12 +1,10 @@
 package sq_project.backend;
 
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
+import java.text.NumberFormat;
 import java.time.LocalDate;
-import java.time.format.DateTimeParseException;
-import java.util.Date;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
+import java.util.Locale;
 
 public class MedicalData {
 
@@ -38,28 +36,6 @@ public class MedicalData {
         this.medicine = medicine;
     }
 
-    public static MedicalData parseCSVLine(List<String> csvLine) throws InvalidLineException {
-        if(csvLine.isEmpty()){
-            throw new InvalidLineException("");
-        }
-        if(csvLine.size() != 4){
-            throw new InvalidLineException(csvLine);
-        }
-        String dateStr = csvLine.get(0);
-        String medicineStr = csvLine.get(1);
-        String numberStr = csvLine.get(2);
-        String costStr = csvLine.get(3);
-
-        try{
-            LocalDate date = LocalDate.parse(dateStr);
-            int number = Integer.parseInt(numberStr);
-            double cost = Double.parseDouble(costStr);
-            return new MedicalData(date, medicineStr, number, cost);
-        }catch(Exception e){
-            throw new InvalidLineException(csvLine, e);
-        }
-    }
-
     public int getNumber() {
         return number;
     }
@@ -74,6 +50,31 @@ public class MedicalData {
 
     public void setCost(double cost) {
         this.cost = cost;
+    }
+
+    public static MedicalData parseCSVLine(List<String> csvLine) throws InvalidLineException {
+        if(csvLine.isEmpty()){
+            throw new InvalidLineException("");
+        }
+        if(csvLine.size() != 4){
+            throw new InvalidLineException(csvLine);
+        }
+        String dateStr = csvLine.get(0);
+        String medicineStr = csvLine.get(1);
+        String numberStr = csvLine.get(2);
+        String costStr = csvLine.get(3);
+
+        try{
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d.MM.yyyy");
+            LocalDate date = LocalDate.parse(dateStr, formatter);
+            int number = Integer.parseInt(numberStr);
+            NumberFormat format = NumberFormat.getInstance(Locale.GERMAN);
+            Number costNumber = format.parse(costStr);
+            double cost = costNumber.doubleValue();
+            return new MedicalData(date, medicineStr, number, cost);
+        }catch(Exception e){
+            throw new InvalidLineException(csvLine, e);
+        }
     }
 }
 
