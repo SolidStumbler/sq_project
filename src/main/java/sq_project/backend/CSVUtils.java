@@ -28,7 +28,7 @@ public class CSVUtils {
         return parseFile(path, DEFAULT_SEPARATOR, DEFAULT_QUOTE, true);
     }
 
-    public static List<String> getLines(String path) throws FileNotFoundException{
+    public static List<String> getFirstLines(String path) throws FileNotFoundException{
         Scanner scanner = new Scanner(new File(path));
         List<String> retVal = new ArrayList<>();
         while (scanner.hasNext() && retVal.size() < 2) {
