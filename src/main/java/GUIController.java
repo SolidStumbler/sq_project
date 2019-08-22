@@ -62,7 +62,7 @@ public class GUIController implements Initializable {
         if(file != null){
             try{
                 CSVPackage csvPackage = CSVUtils.parseFile(file.getPath(), ';', '"', true);
-                System.out.println(csvPackage.getValues(0));
+                System.out.println(csvPackage.get(0));
             }catch(FileNotFoundException ex){
                 System.err.println(ex.getMessage());
             }
