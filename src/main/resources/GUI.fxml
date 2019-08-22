@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.VBox?>
 
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="745.0" prefWidth="842.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="745.0" prefWidth="842.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUIController">
    <children>
       <VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -23,7 +23,7 @@
               <menus>
                 <Menu mnemonicParsing="false" text="Datei">
                   <items>
-                        <MenuItem fx:id="menuItem_import" mnemonicParsing="false" text="Import CSV..." />
+                        <MenuItem fx:id="menuItem_import" mnemonicParsing="false" onAction="#handleClickMenuItemImportCSV" text="Import CSV..." />
                     <MenuItem mnemonicParsing="false" text="Beenden" />
                   </items>
                 </Menu>
@@ -57,7 +57,7 @@
                         <Insets left="20.0" />
                      </HBox.margin>
                   </Label>
-                  <DatePicker>
+                  <DatePicker fx:id="datepickerFrom">
                      <HBox.margin>
                         <Insets left="10.0" />
                      </HBox.margin>
@@ -67,12 +67,12 @@
                         <Insets left="15.0" />
                      </HBox.margin>
                   </Label>
-                  <DatePicker>
+                  <DatePicker fx:id="datepickerTo">
                      <HBox.margin>
                         <Insets left="10.0" />
                      </HBox.margin>
                   </DatePicker>
-                  <Button mnemonicParsing="false" text="Aktualisieren">
+                  <Button fx:id="btn_refresh" mnemonicParsing="false" text="Aktualisieren">
                      <HBox.margin>
                         <Insets left="35.0" />
                      </HBox.margin>
