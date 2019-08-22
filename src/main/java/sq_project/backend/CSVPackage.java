@@ -42,16 +42,11 @@ public class CSVPackage extends ArrayList<List<String>> {
      */
     @Override
     public List<String> get(int i){
-        if(this.isEmpty()) return null;
-
         // if a header line exists, index is actually index+1 (concerning the wrapped values)
         if(hasHeader){
             i++;
         }
-        if(this.size() < i) {
-            throw new IndexOutOfBoundsException();
-        }
-        return this.get(i);
+        return super.get(i);
     }
 
     @Override
