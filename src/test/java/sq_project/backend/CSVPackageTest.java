@@ -11,22 +11,9 @@ public class CSVPackageTest {
         assert val.size() == 63;
         assert "Datum der Sprechstunde".equals(val.get(0).get(0)) == false;
     }
-
-
     @Test(expected = IndexOutOfBoundsException.class)
-    public void testValuesOutOfRange(){
-
-    }
-
-    @Test
-    public void getHeaders() {
-    }
-
-    @Test
-    public void get() {
-    }
-
-    @Test
-    public void size() {
+    public void testValuesOutOfRange() throws FileNotFoundException {
+        CSVPackage val = CSVUtils.parseFile(System.getProperty("user.dir") + "/src/test/test_data/valid_csv.csv");
+        val.get(63);
     }
 }
