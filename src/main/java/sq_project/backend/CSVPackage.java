@@ -49,6 +49,10 @@ public class CSVPackage extends ArrayList<List<String>> {
         return super.get(i);
     }
 
+    /**
+     * Returns the size of the list without the headerline
+     * @return
+     */
     @Override
     public int size(){
         if(hasHeader) {
