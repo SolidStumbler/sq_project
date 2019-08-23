@@ -1,5 +1,6 @@
 package sq_project.backend;
 
+import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -8,15 +9,19 @@ import java.util.Locale;
 
 public class MedicalData {
 
+    DecimalFormat df = new DecimalFormat("#0.00");
+
     private LocalDate date;
     private String medicine;
     private int number;
     private double cost;
+    private double share;
+    private String shareText;
 
     private MedicalData(LocalDate date, String medicine, int number, double cost){
         this.date = date;
         this.medicine = medicine;
-        this. number = number;
+        this.number = number;
         this.cost = cost;
     }
 
@@ -75,6 +80,24 @@ public class MedicalData {
         }catch(Exception e){
             throw new InvalidLineException(csvLine, e);
         }
+    }
+
+    public double getShare() {
+        return share;
+    }
+
+    public void setShare(double share) {
+        this.share = share;
+        setShareText(df.format(share));
+    }
+
+    public String getShareText() {
+        return shareText;
+    }
+
+    public void setShareText(String shareText) {
+        this.shareText = shareText;
+
     }
 }
 
