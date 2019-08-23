@@ -19,12 +19,16 @@ public class MedicalData {
     private double cost;
     private double share;
     private String shareText;
+    private double costAll;
+    private String costAllText;
 
     private MedicalData(LocalDate date, String medicine, int number, double cost){
         this.date = date;
         this.medicine = medicine;
         this.number = number;
         this.cost = cost;
+        this.costAll = number * cost;
+        this.costAllText = df.format(costAll);
     }
 
     public LocalDate getDate() {
@@ -57,6 +61,7 @@ public class MedicalData {
 
     public void setCost(double cost) {
         this.cost = cost;
+        setCostAll(number * cost);
     }
 
     public static MedicalData parseCSVLine(List<String> csvLine) throws InvalidLineException {
@@ -104,6 +109,22 @@ public class MedicalData {
     public void setShareText(String shareText) {
         this.shareText = shareText;
 
+    }
+
+    public double getCostAll() {
+        return costAll;
+    }
+
+    public void setCostAll(double costAll) {
+        this.costAll = costAll;
+    }
+
+    public String getCostAllText() {
+        return costAllText;
+    }
+
+    public void setCostAllText(String costAllText) {
+        this.costAllText = costAllText;
     }
 }
 

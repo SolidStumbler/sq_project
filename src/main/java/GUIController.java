@@ -64,6 +64,9 @@ public class GUIController implements Initializable {
     private Button btn_refresh;
 
     @FXML
+    private TableColumn<MedicalData, String> col_gesamtKosten;
+
+    @FXML
     void handleClickMenuItemImportCSV(ActionEvent event) {
         FileChooser fileChooser = new FileChooser();
         configureFileChooser(fileChooser);
@@ -129,6 +132,10 @@ public class GUIController implements Initializable {
                 new PropertyValueFactory<MedicalData, String>("shareText")
         );
 
+        col_gesamtKosten.setCellValueFactory(
+                new PropertyValueFactory<MedicalData, String>("costAllText")
+        );
+
     }
 
     @Override
@@ -143,11 +150,11 @@ public class GUIController implements Initializable {
         double costAll = 0.0;
 
         for(MedicalData md : tableViewItems){
-            costAll += md.getCost();
+            costAll += md.getCostAll();
         }
 
         for(MedicalData md : tableViewItems){
-            md.setShare(md.getCost() / costAll * 100.0);
+            md.setShare(md.getCostAll() / costAll * 100.0);
         }
 
         tableView.setItems(tableViewItems);
@@ -195,6 +202,14 @@ public class GUIController implements Initializable {
         alert.setContentText(contentText);
 
         alert.showAndWait();
+    }
+
+    @FXML
+    void handleClickOnBtnRefresh(ActionEvent event) {
+        LocalDate localDateFrom = datepickerFrom.getValue();
+        LocalDate localDateTo = datepickerTo.getValue();
+
+
     }
 
 }
