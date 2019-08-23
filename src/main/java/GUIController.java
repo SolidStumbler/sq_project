@@ -112,11 +112,13 @@ public class GUIController implements Initializable {
 
                 fillPieChart();
 
+                btn_refresh.setDisable(false);
+
                 if(medicalDataPackage.hasError()){
                     throw medicalDataPackage.getError();
                 }
 
-                btn_refresh.setDisable(false);
+
 
             }catch(FileNotFoundException ex){
                 showErrorDialog("Fehler", "Folgender Fehler ist aufgetreten:", ex.getMessage());
