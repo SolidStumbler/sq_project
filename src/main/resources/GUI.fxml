@@ -35,12 +35,12 @@
             </MenuBar>
             <TableView fx:id="tableView" prefHeight="356.0" prefWidth="613.0" VBox.vgrow="ALWAYS">
               <columns>
-                <TableColumn fx:id="col_datum" editable="false" prefWidth="63.0" text="Datum" />
+                <TableColumn fx:id="col_datum" editable="false" prefWidth="100.0" text="Datum" />
                 <TableColumn fx:id="col_mediName" minWidth="0.0" prefWidth="125.0" text="Name" />
                   <TableColumn fx:id="col_anzahlVerschreibung" prefWidth="68.0" text="Anzahl" />
                   <TableColumn fx:id="col_kostenProVerschreibung" prefWidth="94.0" text="Kosten €" />
                   <TableColumn fx:id="col_gesamtKosten" prefWidth="124.0" text="Gesamtkosten €" />
-                  <TableColumn fx:id="col_prozentualerAnteil" prefWidth="125.0" text="Anteil %" />
+                  <TableColumn fx:id="col_prozentualerAnteil" prefWidth="75.0" text="Anteil %" />
               </columns>
                <VBox.margin>
                   <Insets left="20.0" right="20.0" top="20.0" />
