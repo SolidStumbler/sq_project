@@ -70,9 +70,11 @@ public class GUIController implements Initializable {
         if(file != null){
             try{
                 CSVPackage csvPackage = CSVUtils.parseFile(file.getPath(), ';', '"', true);
-                ArrayList<MedicalData> list_medicalData = MedicalDataPackage.createFromCSVPackage(csvPackage);
+                try {
+                    ArrayList<MedicalData> list_medicalData = MedicalDataPackage.createFromCSVPackage(csvPackage);
+                    tableViewItems = FXCollections.observableArrayList(list_medicalData);
+                }catch(Exception e) {}
 
-                tableViewItems = FXCollections.observableArrayList(list_medicalData);
 
                 fillTableView();
 
