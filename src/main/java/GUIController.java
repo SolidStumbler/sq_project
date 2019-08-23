@@ -1,3 +1,5 @@
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -9,11 +11,13 @@ import javafx.stage.Stage;
 import sq_project.backend.CSVPackage;
 import sq_project.backend.CSVUtils;
 import sq_project.backend.MedicalData;
+import sq_project.backend.MedicalDataPackage;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.net.URL;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.ResourceBundle;
 
@@ -21,11 +25,13 @@ public class GUIController implements Initializable {
 
     private Stage stage;
 
+    private ObservableList<MedicalData> tableViewItems;
+
     @FXML
     private MenuItem menuItem_import;
 
     @FXML
-    private TableView<?> tableView;
+    private TableView<MedicalData> tableView;
 
     @FXML
     private TableColumn<MedicalData, Date> col_datum;
@@ -63,7 +69,12 @@ public class GUIController implements Initializable {
         if(file != null){
             try{
                 CSVPackage csvPackage = CSVUtils.parseFile(file.getPath(), ';', '"', true);
-                System.out.println(csvPackage.get(0));
+                ArrayList<MedicalData> list_medicalData = MedicalDataPackage.createFromCSVPackage(csvPackage);
+
+                tableViewItems = FXCollections.observableArrayList(list_medicalData);
+
+                fillTableView();
+
             }catch(FileNotFoundException ex){
                 System.err.println(ex.getMessage());
             }
@@ -107,7 +118,28 @@ public class GUIController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        configureTableColumns();
+        //fillPieChart();
+        //fillTableView();
+    }
 
+    private void fillTableView() {
+        tableView.setItems(tableViewItems);
+    }
+
+
+    private void fillPieChart(){
+
+        ObservableList<PieChart.Data> pieChartData =
+                FXCollections.observableArrayList(
+                        new PieChart.Data("Grapefruit", 13),
+                        new PieChart.Data("Oranges", 25),
+                        new PieChart.Data("Plums", 10),
+                        new PieChart.Data("Pears", 22),
+                        new PieChart.Data("Apples", 30));
+        pieChart.setData(pieChartData);
+
+        
     }
 
     public void setStage(Stage stage){
