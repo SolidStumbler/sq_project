@@ -13,6 +13,7 @@ import sq_project.backend.MedicalData;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.ResourceBundle;
 
