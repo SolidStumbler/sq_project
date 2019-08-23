@@ -9,6 +9,7 @@ public class InvalidLineException extends Exception{
     public InvalidLineException(String line) {
         this.line = line;
     }
+
     public InvalidLineException(List<String> line) {
         String concat = "";
         for(String l : line){
@@ -16,11 +17,13 @@ public class InvalidLineException extends Exception{
         }
         this.line = concat;
     }
+
     public InvalidLineException(String line, Exception e) {
         this.line = line;
         this.innerException = e;
     }
-    public InvalidLineException(List<String> line,Exception e) {
+
+    public InvalidLineException(List<String> line, Exception e) {
         String concat = "";
         for(String l : line){
             concat = concat + l;
@@ -28,8 +31,14 @@ public class InvalidLineException extends Exception{
         this.line = concat;
         this.innerException = e;
     }
+
     public String getLine() {
         return line;
+    }
+
+    @Override
+    public String getMessage() {
+        return "Unable to parse: \"" + getLine()+ "\"";
     }
 
     public void setLine(String line) {
