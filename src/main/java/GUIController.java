@@ -116,6 +116,8 @@ public class GUIController implements Initializable {
                     throw medicalDataPackage.getError();
                 }
 
+                btn_refresh.setDisable(false);
+
             }catch(FileNotFoundException ex){
                 showErrorDialog("Fehler", "Folgender Fehler ist aufgetreten:", ex.getMessage());
             }catch (CollectedExceptionsException ex){
@@ -180,6 +182,7 @@ public class GUIController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         configureTableColumns();
+        btn_refresh.setDisable(true);
     }
 
     /**
