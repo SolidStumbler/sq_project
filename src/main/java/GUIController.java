@@ -8,10 +8,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-import sq_project.backend.CSVPackage;
-import sq_project.backend.CSVUtils;
-import sq_project.backend.MedicalData;
-import sq_project.backend.MedicalDataPackage;
+import sq_project.backend.*;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -81,8 +78,11 @@ public class GUIController implements Initializable {
                 fillPieChart();
 
             }catch(FileNotFoundException ex){
-                System.err.println(ex.getMessage());
+                showErrorDialog("Fehler", "Folgender Fehler ist aufgetreten:", ex.getMessage());
+            }catch (CollectedExceptionsException ex){
+                showErrorDialog("Fehler", "Beim Einlesen der CSV-Datei ist folgender Fehler aufgetreten", ex.getMessage());
             }
+
 
         }
     }
@@ -172,5 +172,14 @@ public class GUIController implements Initializable {
         this.stage = stage;
     }
 
+
+    private void showErrorDialog(String title, String headerText, String contentText){
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle(title);
+        alert.setHeaderText(headerText);
+        alert.setContentText(contentText);
+
+        alert.showAndWait();
+    }
 
 }
