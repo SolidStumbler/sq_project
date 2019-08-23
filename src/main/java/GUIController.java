@@ -20,53 +20,76 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.ResourceBundle;
 
+/**
+ * This Class represents all the GUI-Elements and their interactions
+ */
 public class GUIController implements Initializable {
 
+    //Loads all the items from the csv and doesn't change
     private ObservableList<MedicalData> initialData;
 
+    //Represents the stage of the application
     private Stage stage;
 
+    //Represents the data of the TableView
     private ObservableList<MedicalData> tableViewItems;
 
+    //Shows the total costs of the filtered items
     @FXML
     private Label lbl_gesamt;
 
+    //Represent the MenuItem for importing files
     @FXML
     private MenuItem menuItem_import;
 
+    //Represents the TableView
     @FXML
     private TableView<MedicalData> tableView;
 
+    //Represents the column 'Datum'
     @FXML
     private TableColumn<MedicalData, Date> col_datum;
 
+    //Represents the column 'Medikamentenname'
     @FXML
     private TableColumn<MedicalData, String> col_mediName;
 
+    //Represents the column 'Anzahl Verschreibungen'
     @FXML
     private TableColumn<MedicalData, Integer> col_anzahlVerschreibung;
 
+    //Represents the column 'Kosten pro Verschreibung'
     @FXML
     private TableColumn<MedicalData, Double> col_kostenProVerschreibung;
 
+    //Represents the column 'Anteil in %'
     @FXML
     private TableColumn<MedicalData, String> col_prozentualerAnteil;
 
+    //Represents the PieChart
     @FXML
     private PieChart pieChart;
 
+    //Represents the DatePicker for the startDate
     @FXML
     private DatePicker datepickerFrom;
 
+    //Represents the DatePicker for the endDate
     @FXML
     private DatePicker datepickerTo;
 
+    //Represents the Button for start filtering
     @FXML
     private Button btn_refresh;
 
+    //Represents the column 'Gesamtkosten'
     @FXML
     private TableColumn<MedicalData, String> col_gesamtKosten;
 
+    /**
+     * This method handles the click on the menuitem 'Import CSV...' and opens a FileChooser
+     * @param event The called ActionEvent
+     */
     @FXML
     void handleClickMenuItemImportCSV(ActionEvent event) {
         FileChooser fileChooser = new FileChooser();
@@ -103,6 +126,10 @@ public class GUIController implements Initializable {
         }
     }
 
+    /**
+     * This method configures the FileChooser so that only CSV-Files can be opened
+     * @param fileChooser The FileChooser which should be configured
+     */
     private void configureFileChooser(FileChooser fileChooser){
         fileChooser.setTitle("Öffne CSV-Datei");
         fileChooser.setInitialDirectory(
@@ -114,6 +141,10 @@ public class GUIController implements Initializable {
 
     }
 
+    /**
+     * This method configures the TableColumns so that each column contains the corresponding data from the object
+     * 'MedicalData'
+     */
     private void configureTableColumns(){
         col_datum.setCellValueFactory(
                 new PropertyValueFactory<MedicalData, Date>("date")
@@ -141,11 +172,19 @@ public class GUIController implements Initializable {
 
     }
 
+    /**
+     * This method is called when the GUI is initialized
+     * @param location
+     * @param resources
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         configureTableColumns();
     }
 
+    /**
+     * This method fills the TableView with data
+     */
     private void fillTableView() {
 
         DecimalFormat df = new DecimalFormat("#0.00");
@@ -165,8 +204,9 @@ public class GUIController implements Initializable {
         lbl_gesamt.setText(df.format(costAll) + "€");
     }
 
-
-
+    /**
+     * This method fills the PieChart with data
+     */
     private void fillPieChart(){
 
         ObservableList<PieChart.Data> pieChartData = FXCollections.observableArrayList();
@@ -193,11 +233,20 @@ public class GUIController implements Initializable {
 
     }
 
+    /**
+     * Sets the stage from the Application
+     * @param stage
+     */
     public void setStage(Stage stage){
         this.stage = stage;
     }
 
-
+    /**
+     * This method shows an error dialog
+     * @param title The title of the dialog
+     * @param headerText The header text of the dialog
+     * @param contentText The content text of the dialog
+     */
     private void showErrorDialog(String title, String headerText, String contentText){
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle(title);
@@ -207,10 +256,12 @@ public class GUIController implements Initializable {
         alert.showAndWait();
     }
 
+    /**
+     * This method is called when the user clicks the Button 'Aktualisieren'
+     * @param event The corresponding ActionEvent
+     */
     @FXML
     void handleClickOnBtnRefresh(ActionEvent event) {
-
-
 
         LocalDate localDateFrom = datepickerFrom.getValue();
         LocalDate localDateTo = datepickerTo.getValue();
@@ -242,6 +293,13 @@ public class GUIController implements Initializable {
         //System.out.println(localDateFrom + "; " + localDateTo);
     }
 
+    /**
+     * This method checks whether a date is in a specific range
+     * @param dateToCheck The date which should be checked
+     * @param startDate The StartDate of the range
+     * @param endDate The EndDate of the range
+     * @return
+     */
     private boolean isDateWithinRange(LocalDate dateToCheck, LocalDate startDate, LocalDate endDate){
         return (dateToCheck.isAfter(startDate.minusDays(1)) && (dateToCheck.isBefore(endDate.plusDays(1))));
     }
