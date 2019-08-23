@@ -31,39 +31,77 @@ public class MedicalData {
         this.costAllText = df.format(costAll);
     }
 
+    /**
+     * Get date
+     * @return date
+     */
     public LocalDate getDate() {
         return date;
     }
 
+    /**
+     * Set date
+     * @param date date to be set
+     */
     public void setDate(LocalDate date) {
         this.date = date;
     }
 
+    /**
+     * Get medicine
+     * @return medicine
+     */
     public String getMedicine() {
         return medicine;
     }
 
+    /**
+     * Set medicine
+     * @param medicine medicine to be set
+     */
     public void setMedicine(String medicine) {
         this.medicine = medicine;
     }
 
+    /**
+     * Get number
+     * @return number
+     */
     public int getNumber() {
         return number;
     }
 
+    /**
+     * Set number
+     * @param number number to be set
+     */
     public void setNumber(int number) {
         this.number = number;
     }
 
+    /**
+     * Get cost
+     * @return cost
+     */
     public double getCost() {
         return cost;
     }
 
+    /**
+     * Set cost
+     * @param cost cost to be set
+     */
     public void setCost(double cost) {
         this.cost = cost;
         setCostAll(number * cost);
     }
 
+    /**
+     * Create a new MedicalData-object from line out of a csv-file
+     * @param csvLine list of strings of a single csv-line
+     * @return a new MedicalData-object
+     * @throws InvalidLineException if the line could not be parsed
+     */
     public static MedicalData parseCSVLine(List<String> csvLine) throws InvalidLineException {
         if(csvLine.isEmpty()){
             throw new InvalidLineException("");
@@ -93,36 +131,67 @@ public class MedicalData {
         }
     }
 
+    /**
+     * Get share
+     * @return share
+     */
     public double getShare() {
         return share;
     }
 
+    /**
+     * Set share
+     * @param share share to be set
+     */
     public void setShare(double share) {
         this.share = share;
         setShareText(df.format(share));
     }
 
+    /**
+     * Get share text
+     * @return shareText
+     */
     public String getShareText() {
         return shareText;
     }
 
+    /**
+     * Set shareText
+     * @param shareText share text to be set
+     */
     public void setShareText(String shareText) {
         this.shareText = shareText;
-
     }
 
+    /**
+     * Get compound cost
+     * @return costAll
+     */
     public double getCostAll() {
         return costAll;
     }
 
+    /**
+     * Set compound cost
+     * @param costAll compound cost to be set
+     */
     public void setCostAll(double costAll) {
         this.costAll = costAll;
     }
 
+    /**
+     * Get text describing compound cost
+     * @return costAllText
+     */
     public String getCostAllText() {
         return costAllText;
     }
 
+    /**
+     * Set text describing compound cost
+     * @param costAllText costAllText to be set
+     */
     public void setCostAllText(String costAllText) {
         this.costAllText = costAllText;
     }
