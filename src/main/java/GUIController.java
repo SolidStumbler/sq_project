@@ -13,6 +13,7 @@ import sq_project.backend.*;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.net.URL;
+import java.text.DecimalFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
@@ -20,6 +21,7 @@ import java.util.HashMap;
 import java.util.ResourceBundle;
 
 public class GUIController implements Initializable {
+
 
     private Stage stage;
 
@@ -44,7 +46,7 @@ public class GUIController implements Initializable {
     private TableColumn<MedicalData, Double> col_kostenProVerschreibung;
 
     @FXML
-    private TableColumn<Double, Double> col_prozentualerAnteil;
+    private TableColumn<MedicalData, String> col_prozentualerAnteil;
 
     @FXML
     private PieChart pieChart;
@@ -121,7 +123,7 @@ public class GUIController implements Initializable {
         );
 
         col_prozentualerAnteil.setCellValueFactory(
-                new PropertyValueFactory<Double, Double>("prozent")
+                new PropertyValueFactory<MedicalData, String>("shareText")
         );
 
     }
@@ -129,25 +131,26 @@ public class GUIController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         configureTableColumns();
-        //fillPieChart();
-        //fillTableView();
     }
 
     private void fillTableView() {
+
+        double costAll = 0.0;
+
+        for(MedicalData md : tableViewItems){
+            costAll += md.getCost();
+        }
+
+        for(MedicalData md : tableViewItems){
+            md.setShare(md.getCost() / costAll * 100.0);
+        }
+
         tableView.setItems(tableViewItems);
     }
 
 
-    private void fillPieChart(){
 
-        /*ObservableList<PieChart.Data> pieChartData =
-                FXCollections.observableArrayList(
-                        new PieChart.Data("Grapefruit", 13),
-                        new PieChart.Data("Oranges", 25),
-                        new PieChart.Data("Plums", 10),
-                        new PieChart.Data("Pears", 22),
-                        new PieChart.Data("Apples", 30));
-        pieChart.setData(pieChartData);*/
+    private void fillPieChart(){
 
         ObservableList<PieChart.Data> pieChartData = FXCollections.observableArrayList();
 
