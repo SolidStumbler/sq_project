@@ -96,7 +96,7 @@ public class GUIController implements Initializable {
             }catch(FileNotFoundException ex){
                 showErrorDialog("Fehler", "Folgender Fehler ist aufgetreten:", ex.getMessage());
             }catch (CollectedExceptionsException ex){
-                showErrorDialog("Fehler", "Beim Einlesen der CSV-Datei ist folgender Fehler aufgetreten", ex.getMessage());
+                showErrorDialog("Fehler", "Beim Einlesen der CSV-Datei ist folgender Fehler aufgetreten.\nDie unten stehenden Zeilen wurden nicht geladen:", ex.getMessage());
             }
 
 
