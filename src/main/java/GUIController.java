@@ -19,6 +19,7 @@ import java.net.URL;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.ResourceBundle;
 
 public class GUIController implements Initializable {
@@ -75,6 +76,8 @@ public class GUIController implements Initializable {
 
                 fillTableView();
 
+                fillPieChart();
+
             }catch(FileNotFoundException ex){
                 System.err.println(ex.getMessage());
             }
@@ -130,16 +133,37 @@ public class GUIController implements Initializable {
 
     private void fillPieChart(){
 
-        ObservableList<PieChart.Data> pieChartData =
+        /*ObservableList<PieChart.Data> pieChartData =
                 FXCollections.observableArrayList(
                         new PieChart.Data("Grapefruit", 13),
                         new PieChart.Data("Oranges", 25),
                         new PieChart.Data("Plums", 10),
                         new PieChart.Data("Pears", 22),
                         new PieChart.Data("Apples", 30));
+        pieChart.setData(pieChartData);*/
+
+        ObservableList<PieChart.Data> pieChartData = FXCollections.observableArrayList();
+
+        HashMap<String, Double> hashMap = new HashMap<>();
+
+        for(MedicalData md : tableViewItems){
+            if(hashMap.containsKey(md.getMedicine())){
+                hashMap.put(md.getMedicine(), md.getCost() + hashMap.get(md.getMedicine()));
+            }else{
+                hashMap.put(md.getMedicine(), md.getCost());
+            }
+
+
+        }
+
+        for(String s : hashMap.keySet()){
+            pieChartData.add(new PieChart.Data(s, hashMap.get(s)));
+        }
+
         pieChart.setData(pieChartData);
 
-        
+
+
     }
 
     public void setStage(Stage stage){
