@@ -74,7 +74,7 @@ public class MedicalData {
             NumberFormat format = NumberFormat.getInstance(Locale.GERMAN);
             Number costNumber = format.parse(costStr, pos);
             if(pos.getIndex() != costStr.length()){
-                throw new Exception();
+                throw new ParseException(costStr, pos.getIndex());
             }
             double cost = costNumber.doubleValue();
             return new MedicalData(date, medicineStr, number, cost);
