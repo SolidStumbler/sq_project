@@ -11,7 +11,7 @@ import java.util.Locale;
 
 public class MedicalData {
 
-    DecimalFormat df = new DecimalFormat("#0.00");
+    private DecimalFormat df = new DecimalFormat("#0.00");
 
     private LocalDate date;
     private String medicine;

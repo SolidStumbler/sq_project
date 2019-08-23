@@ -28,6 +28,9 @@ public class GUIController implements Initializable {
     private ObservableList<MedicalData> tableViewItems;
 
     @FXML
+    private Label lbl_gesamt;
+
+    @FXML
     private MenuItem menuItem_import;
 
     @FXML
@@ -135,6 +138,8 @@ public class GUIController implements Initializable {
 
     private void fillTableView() {
 
+        DecimalFormat df = new DecimalFormat("#0.00");
+
         double costAll = 0.0;
 
         for(MedicalData md : tableViewItems){
@@ -146,6 +151,8 @@ public class GUIController implements Initializable {
         }
 
         tableView.setItems(tableViewItems);
+
+        lbl_gesamt.setText(df.format(costAll) + "€");
     }
 
 
