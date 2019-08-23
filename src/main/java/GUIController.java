@@ -67,15 +67,20 @@ public class GUIController implements Initializable {
         if(file != null){
             try{
                 CSVPackage csvPackage = CSVUtils.parseFile(file.getPath(), ';', '"', true);
-                try {
-                    ArrayList<MedicalData> list_medicalData = MedicalDataPackage.createFromCSVPackage(csvPackage);
-                    tableViewItems = FXCollections.observableArrayList(list_medicalData);
-                }catch(Exception e) {}
 
+                MedicalDataPackage medicalDataPackage = MedicalDataPackage.createFromCSVPackage(csvPackage);
+
+                ArrayList<MedicalData> list_medicalData = medicalDataPackage;
+
+                tableViewItems = FXCollections.observableArrayList(list_medicalData);
 
                 fillTableView();
 
                 fillPieChart();
+
+                if(medicalDataPackage.hasError()){
+                    throw medicalDataPackage.getError();
+                }
 
             }catch(FileNotFoundException ex){
                 showErrorDialog("Fehler", "Folgender Fehler ist aufgetreten:", ex.getMessage());
