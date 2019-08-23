@@ -2,6 +2,8 @@ package sq_project.backend;
 
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
+import java.text.ParseException;
+import java.text.ParsePosition;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
@@ -73,8 +75,12 @@ public class MedicalData {
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d.MM.yyyy");
             LocalDate date = LocalDate.parse(dateStr, formatter);
             int number = Integer.parseInt(numberStr);
+            ParsePosition pos = new ParsePosition(0);
             NumberFormat format = NumberFormat.getInstance(Locale.GERMAN);
-            Number costNumber = format.parse(costStr);
+            Number costNumber = format.parse(costStr, pos);
+            if(pos.getIndex() != costStr.length()){
+                throw new ParseException(costStr, pos.getIndex());
+            }
             double cost = costNumber.doubleValue();
             return new MedicalData(date, medicineStr, number, cost);
         }catch(Exception e){

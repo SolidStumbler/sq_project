@@ -12,8 +12,7 @@ public class CollectedExceptionsException extends Exception {
 
     @Override
     public String getMessage() {
-        String retVal = super.getMessage();
-
+        String retVal = "Collected Line Errors: ";
         for(Integer i : innerExceptions.keySet()){
             retVal += "\r\nline " + i + ": "+ innerExceptions.get(i).getMessage();
         }

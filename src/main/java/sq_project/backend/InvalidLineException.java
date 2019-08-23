@@ -26,7 +26,7 @@ public class InvalidLineException extends Exception{
     public InvalidLineException(List<String> line, Exception e) {
         String concat = "";
         for(String l : line){
-            concat = concat + l;
+            concat = concat + " " + l;
         }
         this.line = concat;
         this.innerException = e;

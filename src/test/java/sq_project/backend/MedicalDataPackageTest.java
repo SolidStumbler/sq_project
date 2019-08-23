@@ -20,6 +20,7 @@ public class MedicalDataPackageTest {
         MedicalDataPackage data = MedicalDataPackage.createFromCSVPackage(val);
         assert(data.size() == 59);
         if (data.hasError()) {
+            System.out.println(data.getError().getMessage());
             throw data.getError();
         }
     }
