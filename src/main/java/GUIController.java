@@ -210,21 +210,34 @@ public class GUIController implements Initializable {
     @FXML
     void handleClickOnBtnRefresh(ActionEvent event) {
 
-        //Validation Check
+
 
         LocalDate localDateFrom = datepickerFrom.getValue();
         LocalDate localDateTo = datepickerTo.getValue();
 
+        //Wrong input
+        if(localDateFrom == null || localDateTo == null){
+            showErrorDialog("Fehler", "Folgender Fehler ist aufgetreten:", "Eingabe der Datumsfelder sind nicht gültig");
+            return;
+        }
+
+        //Startdatum ist vor dem Enddatum und umgekehrt
+        if(localDateFrom.isAfter(localDateTo)){
+            showErrorDialog("Fehler", "Folgender Fehler ist aufgetreten:", "Das Startdatum liegt nach dem Enddatum");
+            return;
+        }
+
         tableViewItems.clear();
         tableView.getItems().clear();
 
-        for(MedicalData md : initialData){
-            if(isDateWithinRange(md.getDate(), localDateFrom, localDateTo))
-            tableViewItems.add(md);
+        for (MedicalData md : initialData) {
+            if (isDateWithinRange(md.getDate(), localDateFrom, localDateTo))
+                tableViewItems.add(md);
         }
 
         fillTableView();
         fillPieChart();
+
 
         //System.out.println(localDateFrom + "; " + localDateTo);
     }
@@ -232,5 +245,7 @@ public class GUIController implements Initializable {
     private boolean isDateWithinRange(LocalDate dateToCheck, LocalDate startDate, LocalDate endDate){
         return (dateToCheck.isAfter(startDate.minusDays(1)) && (dateToCheck.isBefore(endDate.plusDays(1))));
     }
+
+
 
 }
