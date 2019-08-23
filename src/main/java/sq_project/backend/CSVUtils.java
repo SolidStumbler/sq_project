@@ -14,6 +14,15 @@ public class CSVUtils {
     private static final char DEFAULT_SEPARATOR = ';';
     private static final char DEFAULT_QUOTE = '"';
 
+    /**
+     * Parse File with params String path, char separators, char quote and boolean hasHeaders. Return the retVal
+     * @param path as String path
+     * @param separator as char separator
+     * @param quote as char quote
+     * @param hasHeader as boolean if it has header
+     * @return retVal
+     * @throws FileNotFoundException
+     */
     public static CSVPackage parseFile(String path, char separator, char quote, boolean hasHeader)
             throws FileNotFoundException {
 
@@ -27,10 +36,23 @@ public class CSVUtils {
         return retVal;
     }
 
+
+    /**
+     * Return parseFile
+     * @param path as String path
+     * @return parseFile
+     * @throws FileNotFoundException
+     */
     public static CSVPackage parseFile(String path) throws FileNotFoundException {
         return parseFile(path, DEFAULT_SEPARATOR, DEFAULT_QUOTE, true);
     }
 
+    /**
+     * Read the firstLines as String path and return a retVal
+     * @param path as String path
+     * @return retVal
+     * @throws FileNotFoundException
+     */
     public static List<String> getFirstLines(String path) throws FileNotFoundException{
         Scanner scanner = new Scanner(new File(path));
         List<String> retVal = new ArrayList<>();
@@ -40,14 +62,32 @@ public class CSVUtils {
         return retVal;
     }
 
+    /**
+     * Read String csvLine and return parseLine
+     * @param csvLine csvLine
+     * @return parseLine
+     */
     public static List<String> parseLine(String csvLine) {
         return parseLine(csvLine, DEFAULT_SEPARATOR, DEFAULT_QUOTE);
     }
 
+    /**
+     * Read String csvLine and char separators and return parseLine
+     * @param csvLine csvLine
+     * @param separators seperators
+     * @return parseLine
+     */
     public static List<String> parseLine(String csvLine, char separators) {
         return parseLine(csvLine, separators, DEFAULT_QUOTE);
     }
 
+    /**
+     * Read String csvLine, char separators and char customQuote and return the result
+     * @param csvLine csvLine
+     * @param separators seperators
+     * @param customQuote customQuote
+     * @return result
+     */
     public static List<String> parseLine(String csvLine, char separators, char customQuote) {
 
         List<String> result = new ArrayList<>();
