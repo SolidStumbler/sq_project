@@ -51,7 +51,7 @@ public class CSVPackage extends ArrayList<List<String>> {
 
     /**
      * Returns the size of the list without the headerline
-     * @return
+     * @return size
      */
     @Override
     public int size(){

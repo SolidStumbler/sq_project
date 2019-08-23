@@ -21,7 +21,7 @@ public class CSVUtils {
      * @param quote as char quote
      * @param hasHeader as boolean if it has header
      * @return retVal
-     * @throws FileNotFoundException
+     * @throws FileNotFoundException if no file was found
      */
     public static CSVPackage parseFile(String path, char separator, char quote, boolean hasHeader)
             throws FileNotFoundException {
@@ -41,7 +41,7 @@ public class CSVUtils {
      * Return parseFile
      * @param path as String path
      * @return parseFile
-     * @throws FileNotFoundException
+     * @throws FileNotFoundException if no file was found
      */
     public static CSVPackage parseFile(String path) throws FileNotFoundException {
         return parseFile(path, DEFAULT_SEPARATOR, DEFAULT_QUOTE, true);
@@ -51,7 +51,7 @@ public class CSVUtils {
      * Read the firstLines as String path and return a retVal
      * @param path as String path
      * @return retVal
-     * @throws FileNotFoundException
+     * @throws FileNotFoundException if no file was found
      */
     public static List<String> getFirstLines(String path) throws FileNotFoundException{
         Scanner scanner = new Scanner(new File(path));
