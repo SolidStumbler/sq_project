@@ -31,6 +31,6 @@ public class CSVUtilsTest {
     @Test
     public void testExistingCSV() throws FileNotFoundException {
         CSVPackage val = CSVUtils.parseFile(System.getProperty("user.dir") + "/src/test/test_data/valid_csv.csv", ';', '\"', true);
-        assert val.size() == 63;
+        assert val.size() == 62;
     }
 }
