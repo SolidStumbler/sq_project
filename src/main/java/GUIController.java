@@ -172,9 +172,9 @@ public class GUIController implements Initializable {
 
         for(MedicalData md : tableViewItems){
             if(hashMap.containsKey(md.getMedicine())){
-                hashMap.put(md.getMedicine(), md.getCost() + hashMap.get(md.getMedicine()));
+                hashMap.put(md.getMedicine(), md.getCostAll() + hashMap.get(md.getMedicine()));
             }else{
-                hashMap.put(md.getMedicine(), md.getCost());
+                hashMap.put(md.getMedicine(), md.getCostAll());
             }
 
 
