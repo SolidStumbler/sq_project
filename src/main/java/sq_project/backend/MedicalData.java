@@ -29,7 +29,6 @@ public class MedicalData {
         this.cost = cost;
         this.costAll = number * cost;
         this.costAllText = df.format(costAll);
-        date.
     }
 
     public LocalDate getDate() {
