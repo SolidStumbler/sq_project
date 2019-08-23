@@ -9,6 +9,9 @@ import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Locale;
 
+/**
+ * Typed medical data from a csv line
+ */
 public class MedicalData {
 
     private DecimalFormat df = new DecimalFormat("#0.00");
